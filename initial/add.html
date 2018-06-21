@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="shortcut icon" href="image/group.png" type="image/png"/>
+    <title>Групова работа</title>
+	<meta charset="utf-8">
+	<link href="style/add.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+	<div class="header">
+		<center>
+			<span><img id="logo" src="image/group.png"></span>
+			<span id="title">Teamwork time</span>
+		</center>	
+	</div>
+	<div id="buttons">
+		<div class="btn" id="upload"><a href="#">Качване на файл</a></div>
+		<div class="btn" id="view1"><a href="#">Качени файлове</a></div>
+		<div class="btn" id="view2"><a href="#">Достъпни файлове</a></div>
+		<div class="btn" id="exit"><a href="#">Изход</a></div>
+	</div>
+	<div class="main">
+		<form action="upload.php" method="post" enctype="multipart/form-data">
+		<b>Избери файл за качване: </b>
+			<div><input type="file" name="fileToUpload" id="fileToUpload" value="Избор на файл"></div>
+		<b>Име на файла: </b>
+			<div><input type="text" name="fileToUploadNmae" id="fileToUploadName"></div>
+		<b>Потребители с достъп до файла<br>
+		(възможен е избор на много потребители с натиснат клавиш Ctrl): </b>
+			<div><select name="users" size="6" multiple>
+				<option value="потр1">потр1</option>
+				<option value="потр2">потр2</option>
+				<option value="потр3">потр3</option>
+				<option value="потр4">потр4</option>
+				<option value="потребител1">потребител1</option>
+				<option value="потребител2">потребител2</option>
+				<option value="потребител3">потребител3</option>
+				<option value="потребител4">потребител4</option>
+			</select></div>
+			<input class="btn" type="submit" value="Качи файла" name="submit">
+		</form>
+	</div>
+  </body>
+</html>

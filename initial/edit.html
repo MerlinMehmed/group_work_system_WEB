@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="shortcut icon" href="image/group.png" type="image/png"/>
+    <title>Групова работа</title>
+	<meta charset="utf-8">
+	<link href="style/edit.css" rel="stylesheet" type="text/css">
+	<script src="edit.js"></script>
+  </head>
+  <body>
+	<div class="header">
+		<center>
+			<span><img id="logo" src="image/group.png"></span>
+			<span id="title">Teamwork time</span>
+		</center>	
+	</div>
+	<div id="buttons">
+		<div class="btn" id="upload"><a href="#">Качване на файл</a></div>
+		<div class="btn" id="view1"><a href="#">Качени файлове</a></div>
+		<div class="btn" id="view2"><a href="#">Достъпни файлове</a></div>
+		<div class="btn" id="exit"><a href="#">Изход</a></div>
+	</div>
+	<div class="main">
+		<table>
+			<tr><td>Редактиране на файла:</td></tr>
+			<tr>
+				<td colspan="3">
+					<textarea id="inputTextToSave" cols="120" rows="20"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td>Име на файла:     <input id="inputFileNameToSaveAs"></input></td>				
+				<td><button onclick="saveTextAsFile()">Свали</button></td>
+			</tr>
+			<tr>
+				<td><button onclick="">Запази</button><td>
+			</tr>
+			<tr>
+				<td><button onclick="">Запази като нов файл</button><td>
+			</tr>	
+		</table>
+	</div>
+  </body>
+</html>
