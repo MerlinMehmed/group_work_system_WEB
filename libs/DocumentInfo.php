@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 23.6.2018 г.
- * Time: 13:34 ч.
- */
+namespace libs;
 
 class DocumentInfo
 {
