@@ -20,11 +20,11 @@
 		<div class="btn" id="exit"><a href="#">Изход</a></div>
 	</div>
 	<div class="main">
-		<form action="upload.php" method="post" enctype="multipart/form-data">
+		<form action="controllers/uploadDocument.php" method="post" enctype="multipart/form-data">
 		<b>Избери файл за качване: </b>
 			<div><input type="file" name="fileToUpload" id="fileToUpload" value="Избор на файл"></div>
 		<b>Име на файла: </b>
-			<div><input type="text" name="fileToUploadNmae" id="fileToUploadName"></div>
+			<div><input type="text" name="fileName" id="fileName"></div>
 		<b>Потребители с достъп до файла<br>
 		(възможен е избор на много потребители с натиснат клавиш Ctrl): </b>
 			<div><select name="users" size="6" multiple>
