@@ -5,6 +5,7 @@ use libs\Db;
 
 class DocumentInfo
 {
+    private $id;
     private $owner;
     private $contentUrl;
     private $lastUpdateUsername;
@@ -17,12 +18,12 @@ class DocumentInfo
      * @param $lastUpdateUsername
      * @param $lastUpdateDate
      */
-    public function __construct($owner, $contentUrl, $lastUpdateUsername, $lastUpdateDate)
+    public function __construct($owner, $contentUrl)
     {
         $this->owner = $owner;
         $this->contentUrl = $contentUrl;
-        $this->lastUpdateUsername = $lastUpdateUsername;
-        $this->lastUpdateDate = $lastUpdateDate;
+//        $this->lastUpdateUsername = $lastUpdateUsername;
+//        $this->lastUpdateDate = $lastUpdateDate;
     }
 
 
@@ -106,6 +107,7 @@ class DocumentInfo
 
         $dbDocument = $stmt->fetch();
 
+        $this->id = $dbDocument['id'];
         $this->owner = $dbDocument['owner'];
         $this->contentUrl = $dbDocument['content_url'];
         $this->lastUpdateUsername = $dbDocument['last_update_username'];
@@ -130,6 +132,20 @@ class DocumentInfo
         return $stmt->execute([$this->owner, $this->contentUrl, $this->lastUpdateUsername]);
     }
 
+    public function addRight($userToBeAdded)
+    {
+        $stmt = (new Db())->getConn()->prepare("INSERT INTO `user_document` (username, id_document) VALUES (?, ?)");
+        return $stmt->execute([$userToBeAdded, $this->id]);
+    }
+
+    public function removeRight($userToBeDeleted)
+    {
+        if($this->isOwner()) {
+            $stmt = (new Db())->getConn()->prepare("DELETE FROM `user_document` WHERE id_document = ? AND username = ?");
+            $stmt->execute([$this->id, $userToBeDeleted]);
+        }
+    }
+
     public static function fetchAll()
     {
         $stmt = (new Db())->getConn()->prepare("SELECT * FROM `document` ORDER BY id DESC");
@@ -148,5 +164,12 @@ class DocumentInfo
         }
 
         return $documents;
+    }
+
+    private function isOwner()
+    {
+        $stmt = (new Db())->getConn()->prepare("SELECT count (*) FROM 'document' WHERE owner = ? and content_url = ?");
+        $stmt->execute($_SESSION['username'], $this->contentUrl);
+        return $stmt->fetch();
     }
 }
