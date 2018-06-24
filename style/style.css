@@ -37,13 +37,12 @@ body {
 .btn {
 	color: white;
 	font-size:18px;
-	padding-top:10px;
-	margin:15px;
+    padding: 10px;
+    margin:10px 15px 3px 15px;
 	border: 1px solid grey;
 	border-radius:15px;
 	background-color:#720F8F;
 	width: 180px;
-	height:30px;
 }
 
 a {
