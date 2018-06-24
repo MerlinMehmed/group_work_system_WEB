@@ -24,9 +24,9 @@ class Db
         $this->conn = new PDO($dsn, $user, $pass, $opt);
     }
 
-    public static function getConn()
+    public function getConn()
     {
-        return self::conn;
+        return $this->conn;
     }
 }
 ?>

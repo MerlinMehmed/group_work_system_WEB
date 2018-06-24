@@ -96,7 +96,7 @@ class DocumentInfo
         if (!!$this->contentUrl)
         {
             $filePath = $this->contentUrl;
-            $stmt = Db::getConn()->prepare("SELECT * FROM `document` WHERE content_url = ?");
+            $stmt = (new Db())->getConn()->prepare("SELECT * FROM `document` WHERE content_url = ?");
             $result = $stmt->execute([$filePath]);
         }
         else
@@ -126,13 +126,13 @@ class DocumentInfo
             return false;
         }
 
-        $stmt = Db::getConn()->prepare("INSERT INTO `document` (owner, content_url, last_update_username, last_update_date) VALUES (?, ?, ?, ?) ");
-        return $stmt->execute([$this->owner, $this->contentUrl, $this->lastUpdateUsername, $this->lastUpdateDate]);
+        $stmt = (new Db())->getConn()->prepare("INSERT INTO `document` (owner, content_url, last_update_user) VALUES (?, ?, ?) ");
+        return $stmt->execute([$this->owner, $this->contentUrl, $this->lastUpdateUsername]);
     }
 
     public static function fetchAll()
     {
-        $stmt = Db::getConn()->prepare("SELECT * FROM `document` ORDER BY id DESC");
+        $stmt = (new Db())->getConn()->prepare("SELECT * FROM `document` ORDER BY id DESC");
 
         $stmt->execute();
 

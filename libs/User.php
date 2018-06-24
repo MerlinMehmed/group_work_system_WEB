@@ -9,10 +9,10 @@ class User
     private $email;
     private $password;
 
-    public function __construct(string $username, string $password = null)
+    public function __construct($username, $password = null)
     {
         $this->username = $username;
-        if ($password)
+        if (!!$password)
         {
             $this->password = hash('sha256', $password);
         }
@@ -41,14 +41,14 @@ class User
     public function load()
     {
         $stmt = [];
-        if ($this->id)
+        if ($this->username)
         {
-            $stmt = Db::getConn()->prepare("SELECT * FROM `users` WHERE id = ?");
-            $result = $stmt->execute([$this->id]);
+            $stmt = (new Db())->getConn()->prepare("SELECT * FROM `users` WHERE username = ?");
+            $result = $stmt->execute([$this->username]);
         }
         elseif ($this->email)
         {
-            $stmt = Db::getConn()->prepare("SELECT * FROM `users` WHERE email = ?");
+            $stmt = (new Db())->getConn()->prepare("SELECT * FROM `users` WHERE email = ?");
             $result = $stmt->execute([$this->email]);
         }
         else
@@ -58,33 +58,31 @@ class User
 
         $dbUser = $stmt->fetch();
 
-        $this->id           = $dbUser['id'];
-        $this->username         = $dbUser['name'];
+        $this->username     = $dbUser['name'];
         $this->email        = $dbUser['email'];
-        $this->registeredOn = $dbUser['name'];
 
         return !!$dbUser;
     }
 
     public function insert()
     {
-        $existingUser = new User('');
-        $existingUser->setEmail($this->email);
+        $existingUser = new User($this->username);
+//        $existingUser->setEmail($this->email);
         $existingUser->load();
 
-        if ($existingUser->id)
+        if ($existingUser->username)
         {
             // user exists
             return false;
         }
 
-        $stmt = Db::getConn()->prepare("INSERT INTO `users` (name, email, password) VALUES (?, ?, ?) ");
+        $stmt = (new Db())->getConn()->prepare("INSERT INTO `users` (username, email, password) VALUES (?, ?, ?) ");
         return $stmt->execute([$this->username, $this->email, $this->password]);
     }
 
     public static function fetchAll()
     {
-        $stmt = Db::getConn()->prepare("SELECT * FROM `users` ORDER BY registered_on DESC");
+        $stmt = (new Db())->getConn()->prepare("SELECT * FROM `users` ORDER BY registered_on DESC");
 
         $stmt->execute();
 
@@ -93,8 +91,7 @@ class User
         while ($user = $stmt->fetch())
         {
             $userObject = new User($user['name']);
-            $userObject->setId($user['id']);
-            $userObject->setRegisteredOn($user['registered_on']);
+            $userObject->setEmail($user['email']);
             $users[] = $userObject;
         }
 

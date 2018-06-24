@@ -6,17 +6,16 @@ Init::_init(true);
 use libs\User;
 
 $user = new User($_POST['username'], $_POST['password']);
+$user->setEmail($_POST['email']);
+$success = $user->insert();
 
-$exists = $user->load();
-
-if ($exists)
+if ($success)
 {
-    $_SESSION['username'] = $user->getUsername();
     header('Location: ../index.php');
 }
 else
 {
-    header('Location: ../login.php?exists=0');
+    header('Location: ../register.php?exists=true');
 }
 
 ?>

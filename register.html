@@ -16,12 +16,12 @@
 	<div class="form_holder">
 		<center >
 			<h1>Регистрация</h1>
-			<form id="myform" method="post" action="">
-				<h4>Потребителско име:</h4> <input type="text" name="name">
-				<h4>E-mail:</h4> <input type="email" name="name">
-				<h4>Парола:</h4><input type="password" name="pass">
+			<form id="register" method="post" action="controllers/register.php">
+				<h4>Потребителско име:</h4> <input type="text" name="username">
+				<h4>E-mail:</h4> <input type="email" name="email">
+				<h4>Парола:</h4><input type="password" name="password">
 				<h4>Повтори паролата:</h4><input type="password" name="secondpass">
-				<div class="btn"><a href="#">Регистрация</a></div>
+				<div class="btn"><input type="submit" value="Регистрация" /></div>
 			</form>
 		</center>
 	</div>

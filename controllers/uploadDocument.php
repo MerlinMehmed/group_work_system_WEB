@@ -6,9 +6,6 @@ use libs\DocumentInfo;
 
 $_SESSION['user'] = 'polly';
 
-
-
-
 define('MB', 1048576);
 $username = $_SESSION['user'];
 
