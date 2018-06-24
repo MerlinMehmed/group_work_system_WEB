@@ -5,6 +5,7 @@
     <title>Групова работа</title>
 	<meta charset="utf-8">
 	<link href="style/add.css" rel="stylesheet" type="text/css">
+	<script src="add.js"></script>
   </head>
   <body>
 	<div class="header">
@@ -25,18 +26,9 @@
 			<div><input type="file" name="fileToUpload" id="fileToUpload" value="Избор на файл"></div>
 		<b>Име на файла: </b>
 			<div><input type="text" name="fileName" id="fileName"></div>
-		<b>Потребители с достъп до файла<br>
-		(възможен е избор на много потребители с натиснат клавиш Ctrl): </b>
-			<div><select name="users" size="6" multiple>
-				<option value="потр1">потр1</option>
-				<option value="потр2">потр2</option>
-				<option value="потр3">потр3</option>
-				<option value="потр4">потр4</option>
-				<option value="потребител1">потребител1</option>
-				<option value="потребител2">потребител2</option>
-				<option value="потребител3">потребител3</option>
-				<option value="потребител4">потребител4</option>
-			</select></div>
+		<b>Потребители с достъп до файла: </b>
+			<div><input type="text" name="user" class="user"><span id="add" onclick="addInput()">+<span></div>
+			<div id="inputs"></div>
 			<input class="btn" type="submit" value="Качи файла" name="submit">
 		</form>
 	</div>

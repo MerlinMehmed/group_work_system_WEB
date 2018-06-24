@@ -102,3 +102,20 @@ input.btn {
 	padding-bottom:30px;
 	margin:0;
 }
+
+#add {
+	background-color:#720F8F;
+    border: none;
+    color: white;
+	border-radius: 5px;
+	margin:10px;
+    font-size: 16px;
+	width:20px;
+	height:15px;
+	text-align:center;
+}
+
+#inputs {
+	margin:0;
+	padding:0;
+}
