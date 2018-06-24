@@ -4,10 +4,8 @@ Init::_init(true);
 
 use libs\DocumentInfo;
 
-$_SESSION['user'] = 'polly';
-
 define('MB', 1048576);
-$username = $_SESSION['user'];
+$username = $_SESSION['username'];
 
 $target_dir = "../uploads/users/".$username."/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);

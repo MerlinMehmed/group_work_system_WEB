@@ -58,7 +58,7 @@ class User
 
         $dbUser = $stmt->fetch();
 
-        $this->username     = $dbUser['name'];
+        $this->username     = $dbUser['username'];
         $this->email        = $dbUser['email'];
 
         return !!$dbUser;

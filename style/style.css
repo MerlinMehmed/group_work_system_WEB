@@ -34,6 +34,17 @@ body {
 	background-color: white;
 }
 
+.nav-btn {
+	padding-top:10px;
+	margin:5px;
+	border: 1px solid grey;
+	border-radius:15px;
+	background-color:#720F8F;
+	width: 180px;
+	height:30px;
+	text-align:center;
+}
+
 .btn {
 	color: white;
 	font-size:18px;
@@ -67,3 +78,23 @@ input {
 h1 {
 	margin-bottom:30px;
 }
+
+#buttons {
+	display:flex;
+	align-items: flex-start;
+}
+
+
+#exit {
+	margin-left:auto;
+	width:140px;
+}
+
+#view1 {
+	width: 180px;
+}
+
+#view2 {
+	width: 200px;
+}
+

@@ -8,18 +8,8 @@
 	<script src="js/add.js"></script>
   </head>
   <body>
-	<div class="header">
-		<center>
-			<span><img id="logo" src="image/group.png"></span>
-			<span id="title">Teamwork time</span>
-		</center>	
-	</div>
-	<div id="buttons">
-		<div class="btn" id="upload"><a href="#">Качване на файл</a></div>
-		<div class="btn" id="view1"><a href="#">Качени файлове</a></div>
-		<div class="btn" id="view2"><a href="#">Достъпни файлове</a></div>
-		<div class="btn" id="exit"><a href="#">Изход</a></div>
-	</div>
+    <?php include ("navigation.php"); ?>
+
 	<div class="main">
 		<form action="controllers/uploadDocument.php" method="post" enctype="multipart/form-data">
 		<b>Избери файл за качване: </b>

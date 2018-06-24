@@ -142,8 +142,9 @@ class DocumentInfo
     {
         if($this->isOwner()) {
             $stmt = (new Db())->getConn()->prepare("DELETE FROM `user_document` WHERE id_document = ? AND username = ?");
-            $stmt->execute([$this->id, $userToBeDeleted]);
+            return $stmt->execute([$this->id, $userToBeDeleted]);
         }
+        return false;
     }
 
     public static function fetchAll()
