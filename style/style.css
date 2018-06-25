@@ -35,6 +35,9 @@ body {
 }
 
 .nav-btn {
+	text-decoration:none;
+	color:white;
+	font-size:18px;
 	padding-top:10px;
 	margin:5px;
 	border: 1px solid grey;

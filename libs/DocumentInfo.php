@@ -26,6 +26,10 @@ class DocumentInfo
 //        $this->lastUpdateDate = $lastUpdateDate;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return mixed
@@ -129,6 +133,7 @@ class DocumentInfo
         }
 
         $stmt = (new Db())->getConn()->prepare("INSERT INTO `document` (owner, content_url, last_update_user) VALUES (?, ?, ?) ");
+        $this->lastUpdateUsername=$this->owner;
         return $stmt->execute([$this->owner, $this->contentUrl, $this->lastUpdateUsername]);
     }
 
@@ -145,6 +150,12 @@ class DocumentInfo
             return $stmt->execute([$this->id, $userToBeDeleted]);
         }
         return false;
+    }
+
+    public function hasRight($user)
+    {
+        $stmt = (new Db())->getConn()->prepare("SELECT count (*) FROM `user_document` WHERE id_document = ? AND username = ?");
+        return $stmt->execute([$this->id, $user]);
     }
 
     public static function fetchAll()

@@ -1,5 +1,7 @@
 <?php
 namespace libs;
+
+use libs\Db;
 use libs\DocumentInfo;
 
 class Document
@@ -10,6 +12,7 @@ class Document
     /**
      * Document constructor.
      * @param $documentInfo
+     * @param $content
      */
     public function __construct($documentInfo, $content)
     {
@@ -61,6 +64,24 @@ class Document
         }
     }
 
+    public function updateDocument()
+    {
+        $user = $_SESSION['username'];
+        if($this->documentInfo->hasRight($user)) {
+            $this->writeFile();
+
+            $stmt = (new Db())->getConn()->prepare("UPDATE `document` SET last_update_user = ? AND last_update_date = ? WHERE id = ?");
+            return $stmt->execute([$user, date("Y-m-d h:i:sa"), $this->documentInfo->getId()]);
+        }
+        return false;
+    }
+
+    private function writeFile()
+    {
+        $file = fopen($this->documentInfo->contentUrl, 'w');
+        fwrite($file, $this->content);
+        fclose($file);
+    }
 }
 
 ?>

@@ -43,6 +43,7 @@ if ($uploadOk == 0) {
         $contentUrl = $username."/".$_POST["fileName"];
         $documentInfo = new DocumentInfo($username, $contentUrl, $username, date('d-m-Y H:i:s'));
         $documentInfo->insert();
+        $documentInfo->load();
 
         $users = $_POST['user'];
         foreach ($users as $userToBeAdded) {
