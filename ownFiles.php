@@ -22,7 +22,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="image/group.png" type="image/png"/>
     <title>Групова работа</title>
-    <link href="style/index.css" rel="stylesheet" type="text/css">
+    <link href="style/ownFiles.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -33,18 +33,21 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
 
     $username  = $user->getUsername();
 
-    $sql= "SELECT * FROM `document`  WHERE `owner` = '$username' ORDER BY `last_update_date` DESC";
+    $sql= "SELECT `content_url` FROM `document`  WHERE `owner` = '$username' ORDER BY `last_update_date` DESC";
     $stmt = (new Db())->getConn()->query($sql);
 
+	echo "<button id="."create".">"."Създаване на собствен файл"."</button>";
     echo "<table>";
-    echo "<tr><th>Име на документа</th><th>Редактиран от</th><th>Дата на последна редакция</th></tr>";
+    echo "<tr><th colspan="."3".">Име на документа</th></tr>";  
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         $str = substr($row['content_url'],strlen($username)+1);
-        echo "<tr><td>".$str."</td><td>".$row['last_update_user']."</td><td>".$row['last_update_date']."</td></tr>";
+        echo "<tr><td id="."file".">".$str."</td><td><button>"."Редактиране"."</button></td><td><button>"."Изтриване"."</button></td></tr>";
+
     }
-	echo "</table>";
+    echo "</table>";
+	
 
     ?>
 

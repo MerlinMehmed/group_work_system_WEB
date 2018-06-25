@@ -1,0 +1,105 @@
+#logo {
+	width:150px;
+}
+
+#title {
+	font-size:60px;
+	padding-left:30px;
+}
+
+span {
+	display: inline-table;
+	vertical-align: middle;
+}
+
+body {
+	background-color: #F4DECB;	
+	font-family: Arial;
+}
+
+.header {
+	border: 1px solid gray;
+	border-radius: 15px;
+	background-color: #F8EEE7;
+	margin:0;
+}
+
+.nav-btn {
+	padding-top:10px;
+	margin:5px;
+	border: 1px solid grey;
+	border-radius:15px;
+	background-color:#720F8F;
+	width: 180px;
+	height:30px;
+	text-align:center;
+}
+
+button {
+	margin:10px;
+	padding:10px;
+	border: 1px solid white;
+	border-radius:15px;
+	background-color:#720F8F;
+	text-align:center;
+	color:white;
+	font-size:14px;
+	font-family:Arial;
+	
+}
+
+a {
+	text-decoration:none;
+	color:white;
+	font-size:18px;
+}
+
+.main {
+	margin:0;
+	padding:20px;
+	border: 1px solid gray;
+	border-radius: 15px;
+	background-color: white;
+}
+table {
+	margin:0 auto;
+	border: solid 1px black;
+}
+
+th {
+	border: solid 1px black;
+	padding:10px;	
+	color:white;
+	background-color: #720F8F;
+	font-size:20px;
+}
+
+td {
+	border: solid 1px black;
+	padding:10px;
+	width:350px;
+	background-color: #F8EEE7;
+}
+
+#buttons {
+	display:flex;
+	align-items: flex-start;
+}
+
+
+#exit {
+	margin-left:auto;
+	width:140px;
+}
+
+#view1 {
+	width: 180px;
+}
+
+#view2 {
+	width: 200px;
+}
+
+div {
+	margin:20px;
+}
