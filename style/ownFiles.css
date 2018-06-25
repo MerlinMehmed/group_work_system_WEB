@@ -60,6 +60,7 @@ a {
 
 .main {
 	margin:0;
+	padding:20px;
 	border: 1px solid gray;
 	border-radius: 15px;
 	background-color: white;
@@ -100,7 +101,6 @@ th {
 	display:flex;
 	align-items: flex-start;
 }
-
 
 #exit {
 	margin-left:auto;

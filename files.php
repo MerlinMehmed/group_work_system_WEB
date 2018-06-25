@@ -36,20 +36,22 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     $sql= "SELECT `owner`,`content_url` FROM `document`  WHERE `id` IN (SELECT `id_document` FROM `user_document` WHERE `username`='$username' )";
     $stmt = (new Db())->getConn()->query($sql);
 
+    if($stmt->rowCount() > 0) {
+        echo "<table>";
+        echo "<tr><th colspan=" . "3" . ">Име на документа</th></tr>";
 
-    echo "<table>";
-    echo "<tr><th colspan="."3".">Име на документа</th></tr>";
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $owner = $row['owner'];
+            $str = substr($row['content_url'], strlen($owner) + 1);
+            echo "<tr><td id=" . "file" . ">" . $str . "</td><td><button>" . "Редактиране" . "</button></td></tr>";
 
-        $owner=$row['owner'];
-        $str = substr($row['content_url'],strlen($owner)+1);
-        echo "<tr><td id="."file".">".$str."</td><td><button>"."Редактиране"."</button></td></tr>";
+        }
 
+        echo "</table>";
+    } else {
+        echo "<p> Все още нямате споделени файлове!</p>";
     }
-
-	echo "</table>";
-
     ?>
 
 </div>

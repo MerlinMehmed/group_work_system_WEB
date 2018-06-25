@@ -6,9 +6,10 @@
             </center>
         </div>
         <div id="buttons">
-            <div class="nav-btn" id="upload" onclick="location.href='index.php'">Начало</div>
+            <div class="nav-btn" id="index" onclick="location.href='index.php'">Начало</div>
+            <div class="nav-btn" id="createFile" onclick="location.href='create.php'">Създай файл</div>
             <div class="nav-btn" id="upload" onclick="location.href='add.php'">Качване на файл</div>
-            <div class="nav-btn" id="view1">Качени файлове</div>
-            <div class="nav-btn" id="view2">Достъпни файлове</div>
-            <div class="nav-btn" id="exit" onclick="location.href='logout.php'">Изход</a></div>
+            <div class="nav-btn" id="view1" onclick="location.href='ownFiles.php'">Качени файлове</div>
+            <div class="nav-btn" id="view2" onclick="location.href='files.php'">Достъпни файлове</div>
+            <div class="nav-btn" id="exit" onclick="location.href='controllers/logout.php'">Изход</a></div>
         </div>

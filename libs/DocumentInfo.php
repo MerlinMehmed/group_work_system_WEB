@@ -56,6 +56,14 @@ class DocumentInfo
     }
 
     /**
+     * @param $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @param mixed $contentUrl
      */
     public function setContentUrl($contentUrl)

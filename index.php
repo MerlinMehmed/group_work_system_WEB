@@ -36,16 +36,19 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     $sql= "SELECT * FROM `document`  WHERE `owner` = '$username' ORDER BY `last_update_date` DESC";
     $stmt = (new Db())->getConn()->query($sql);
 
-    echo "<table>";
-    echo "<tr><th>Име на документа</th><th>Редактиран от</th><th>Дата на последна редакция</th></tr>";
+    if($stmt->rowCount() > 0) {
+        echo "<table>";
+        echo "<tr><th>Име на документа</th><th>Редактиран от</th><th>Дата на последна редакция</th></tr>";
 
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        $content_url = $row['content_url'];
-        $str = substr($row['content_url'],strlen($username)+1);
-        echo "<tr><td><a href='edit.php?file=". $row['content_url']."'>".$str."</a></td><td>".$row['last_update_user']."</td><td>".$row['last_update_date']."</td></tr>";
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $content_url = $row['content_url'];
+            $str = substr($row['content_url'], strlen($username) + 1);
+            echo "<tr><td><a href='edit.php?file=" . $row['content_url'] . "'>" . $str . "</a></td><td>" . $row['last_update_user'] . "</td><td>" . $row['last_update_date'] . "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<p> Все още нямате добавени документи.</p>";
     }
-	echo "</table>";
-
     ?>
 
 </div>

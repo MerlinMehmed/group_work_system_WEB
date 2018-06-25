@@ -1,23 +1,25 @@
 <?php
-require_once "../libs/Init.php";
-Init::_init(true);
+require_once "libs/Init.php";
+Init::_init();
 
+use libs\Db;
 use libs\DocumentInfo;
 
 function findDocument($fileName)
 {
-    $_SESSION['user'] = 'polly';
+    $username = $_SESSION['username'];
+    $path = $fileName;
 
-    $username = $_SESSION['user'];
-    $path = $username."/".$fileName;
-
-    $sql= "SELECT * FROM documents WHERE cotentUrl = ?";
+    $sql= "SELECT * FROM document WHERE content_url = ?";
     $stmt = (new Db())->getConn()->prepare($sql);
-    $result = $stmt->execute([$path]);
+    $stmt->execute([$path]);
 
-    $row = $result->fetch_assoc();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $document = new DocumentInfo(row['owner'], row['contentUrl'], row['lastUpdateUsername'], row['lastUpdateDate']);
+    $document = new DocumentInfo($row['owner'], $row['content_url']);
+    $document->setLastUpdateUsername($row['last_update_user']);
+    $document->setLastUpdateDate($row['last_update_date']);
+    $document->setId($row['id']);
 
     return $document;
 }

@@ -9,12 +9,15 @@
   </head>
   <body>
     <?php include ("navigation.php"); ?>
+    <?php
+        include ('controllers/editDocument.php');
+    ?>
 	<div class="main">
 		<table>
 			<tr><td>Редактиране на файла:</td></tr>
 			<tr>
 				<td colspan="3">
-					<textarea id="inputTextToSave" cols="120" rows="20"></textarea>
+					<textarea id="inputTextToSave" cols="120" rows="20" ><?php echo $document->getContent(); ?></textarea>
 				</td>
 			</tr>
 			<tr>

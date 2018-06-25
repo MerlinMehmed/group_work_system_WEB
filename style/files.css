@@ -59,7 +59,7 @@ a {
 }
 
 .main {
-	padding:30px;
+	padding:20px;
 	margin:0;
 	border: 1px solid gray;
 	border-radius: 15px;
@@ -101,10 +101,13 @@ th {
 	align-items: flex-start;
 }
 
-
 #exit {
 	margin-left:auto;
 	width:140px;
+}
+
+#createFile {
+	width: 180px;
 }
 
 #view1 {

@@ -58,10 +58,16 @@ class Document
      */
     public function loadContent()
     {
-        $file = fopen($this->documentInfo->contentUrl, 'r');
-        while(!feof($file)) {
-            $this->content . fgets();
+        $file = fopen("uploads/" . $this->documentInfo->getContentUrl().".html", 'r');
+        if ($file) {
+            while (!feof($file)) {
+                $this->content = $this->content . fgets($file);
+            }
+//            echo $this->content;
+        } else {
+            return false;
         }
+        return true;
     }
 
     public function updateDocument()
@@ -76,9 +82,14 @@ class Document
         return false;
     }
 
-    private function writeFile()
+    public function writeFile()
     {
-        $file = fopen($this->documentInfo->contentUrl, 'w');
+        $path = "../uploads/".$_SESSION['username'];
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $path = "../uploads/".$this->documentInfo->getContentUrl().".html";
+        $file = fopen($path, 'w');
         fwrite($file, $this->content);
         fclose($file);
     }
