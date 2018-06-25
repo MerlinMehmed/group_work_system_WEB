@@ -4,6 +4,7 @@ Init::_init(true);
 
 use libs\DocumentInfo;
 
+//var_dump(implode(", ", $users));
 define('MB', 1048576);
 $username = $_SESSION['username'];
 
@@ -42,6 +43,13 @@ if ($uploadOk == 0) {
         $contentUrl = $username."/".$_POST["fileName"];
         $documentInfo = new DocumentInfo($username, $contentUrl, $username, date('d-m-Y H:i:s'));
         $documentInfo->insert();
+
+        $users = $_POST['user'];
+        foreach ($users as $userToBeAdded) {
+            echo "Rights to " . $userToBeAdded . " are added.";
+            $documentInfo->addRight($userToBeAdded);
+        }
+
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";

@@ -11,6 +11,7 @@ $success = $user->insert();
 
 if ($success)
 {
+    $_SESSION['username'] = $user->getUsername();
     header('Location: ../index.php');
 }
 else

@@ -110,7 +110,7 @@ class DocumentInfo
         $this->id = $dbDocument['id'];
         $this->owner = $dbDocument['owner'];
         $this->contentUrl = $dbDocument['content_url'];
-        $this->lastUpdateUsername = $dbDocument['last_update_username'];
+        $this->lastUpdateUsername = $dbDocument['last_update_user'];
         $this->lastUpdateDate = $dbDocument['last_update_date'];
 
         return !!$dbDocument;

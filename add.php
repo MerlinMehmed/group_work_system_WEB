@@ -17,7 +17,7 @@
 		<b>Име на файла: </b>
 			<div><input type="text" name="fileName" id="fileName"></div>
 		<b>Потребители с достъп до файла: </b>
-			<div><input type="text" name="user" class="user"><span id="add" onclick="addInput()">+<span></div>
+			<div><input type="text" name="user[]" class="user"><span id="add" onclick="addInput()">+<span></div>
 			<div id="inputs"></div>
 			<input class="btn" type="submit" value="Качи файла" name="submit">
 		</form>
