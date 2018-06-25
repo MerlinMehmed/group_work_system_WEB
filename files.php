@@ -5,6 +5,7 @@ Init::_init();
 
 use libs\User;
 use libs\DocumentInfo;
+use libs\Db;
 
 $user = new User("");
 if (isset($_SESSION['username']) && $_SESSION['username'])
@@ -28,12 +29,24 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
 <?php include ("navigation.php"); ?>
 
 <div class="main">
-    <?php include ("controllers/showOwnFiles.php");
+    <?php
+
+    $username  = $user->getUsername();
+
+    $sql= "SELECT `owner`,`content_url` FROM `document`  WHERE `id` IN (SELECT `id_document` FROM `user_document` WHERE `username`='$username' )";
+    $stmt = (new Db())->getConn()->query($sql);
+
 
     echo "<table>";
     echo "<tr><th colspan="."3".">Име на документа</th></tr>";
-	echo "<tr><td id="."file".">"."lalalalalalala"."</td><td><button>"."Редактиране"."</button></td></tr>";
 
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+        $owner=$row['owner'];
+        $str = substr($row['content_url'],strlen($owner)+1);
+        echo "<tr><td id="."file".">".$str."</td><td><button>"."Редактиране"."</button></td></tr>";
+
+    }
 
 	echo "</table>";
 
