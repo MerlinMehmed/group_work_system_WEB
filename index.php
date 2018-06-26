@@ -29,6 +29,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
 <?php include ("navigation.php"); ?>
 
 <div class="main">
+<h2>Последно редактирани документи</h2>
     <?php
 
     $username  = $user->getUsername();

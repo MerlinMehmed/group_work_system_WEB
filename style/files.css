@@ -82,6 +82,7 @@ th {
 }
 
 #file {
+	border: solid 1px black;
 	width:700px;
 	padding-left:30px;
 }

@@ -41,10 +41,10 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
         echo "<tr><th colspan=" . "3" . ">Име на документа</th></tr>";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
+			$content_url = $row['content_url'];
             $owner = $row['owner'];
             $str = substr($row['content_url'], strlen($owner) + 1);
-            echo "<tr><td id=" . "file" . ">" . $str . "</td><td><button>" . "Редактиране" . "</button></td></tr>";
+            echo "<tr><td id=\"" . "file" . "\">" . $str . "</td><td><button onclick='location.href=`edit.php?file=" . $content_url . "`'>" . "Редактиране" . "</button></td>";
 
         }
 
