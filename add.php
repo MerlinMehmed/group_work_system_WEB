@@ -5,6 +5,7 @@
     <title>Групова работа</title>
 	<meta charset="utf-8">
 	<link href="style/add.css" rel="stylesheet" type="text/css">
+	<link href="style/nav.css" rel="stylesheet" type="text/css">
 	<script src="js/add.js"></script>
   </head>
   <body>

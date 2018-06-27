@@ -5,7 +5,9 @@
     <title>Групова работа</title>
 	<meta charset="utf-8">
 	<link href="style/create.css" rel="stylesheet" type="text/css">
+	<link href="style/nav.css" rel="stylesheet" type="text/css">
 	<script src="js/edit.js"></script>
+	<script src="js/add.js"></script>
   </head>
   <body>
     <?php include ("navigation.php"); ?>
@@ -28,13 +30,21 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Име на файла:     <input name="fileName" id="inputFileNameToSaveAs"></input>
-				<input id="text"type="radio" name="type" value="txt"> .txt    
-				<input type="radio" name="type" value="html"> .html</td>
-				<td><button onclick="saveTextAsFile()">Свали</button></td>
+				<td><b>Име на файла:</b>     <input name="fileName" id="inputFileNameToSaveAs"></input> </td>
 			</tr>
+			<tr><td colspan="2"><hr><td></tr>
 			<tr>
-				<td><button type="submit">Запази</button><td>
+				<td><b>Тип на файла:</b><input id="text"type="radio" name="type" value="txt"> .txt    
+				<input type="radio" name="type" value="html"> .html</td>				
+				<td id="download"><button onclick="saveTextAsFile()">Свали</button></td>
+				
+			</tr>
+			<tr><td colspan="2"><hr><td></tr>
+			<tr>
+				<td><b>Потребители с достъп до файла:</b>
+				<div><input type="text" name="user[]" class="user"><span id="add" onclick="addInput()">+<span></div>
+				<div id="inputs"></div></td>
+				<td id="save"><button type="submit">Запази</button><td>
 			</tr>
 		</table>
         </form>

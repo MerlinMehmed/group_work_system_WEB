@@ -58,7 +58,7 @@ class Document
      */
     public function loadContent()
     {
-        $file = fopen("uploads/users/" . $this->documentInfo->getContentUrl().".html", 'r');
+        $file = fopen("uploads/" . $this->documentInfo->getContentUrl().".html", 'r');
         if ($file) {
             while (!feof($file)) {
                 $this->content = $this->content . fgets($file);

@@ -8,7 +8,7 @@ use libs\DocumentInfo;
 define('MB', 1048576);
 $username = $_SESSION['username'];
 
-$target_dir = "../uploads/users/".$username."/";
+$target_dir = "../uploads/".$username."/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -44,14 +44,16 @@ if ($uploadOk == 0) {
         $documentInfo = new DocumentInfo($username, $contentUrl, $username, date('d-m-Y H:i:s'));
         $documentInfo->insert();
         $documentInfo->load();
+		
+		echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 
         $users = $_POST['user'];
         foreach ($users as $userToBeAdded) {
             echo "Rights to " . $userToBeAdded . " are added.";
             $documentInfo->addRight($userToBeAdded);
         }
-
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+		
+		rename ($target_dir.basename( $_FILES["fileToUpload"]["name"]), $target_dir.basename($_POST["fileName"]).'.html');
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

@@ -23,7 +23,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     <link rel="shortcut icon" href="image/group.png" type="image/png"/>
     <title>Групова работа</title>
     <link href="style/files.css" rel="stylesheet" type="text/css">
-
+	<link href="style/nav.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <?php include ("navigation.php"); ?>
@@ -33,8 +33,9 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
 
     $username  = $user->getUsername();
 
-    $sql= "SELECT `owner`,`content_url` FROM `document`  WHERE `id` IN (SELECT `id_document` FROM `user_document` WHERE `username`='$username' )";
-    $stmt = (new Db())->getConn()->query($sql);
+    $sql= "SELECT `owner`,`content_url` FROM `document`  WHERE `id` IN (SELECT `id_document` FROM `user_document` WHERE `username`= ? )";
+    $stmt = (new Db())->getConn()->prepare($sql);
+	$stmt->execute(["$username"]);
 
     if($stmt->rowCount() > 0) {
         echo "<table>";

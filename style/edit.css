@@ -1,27 +1,6 @@
-#logo {
-	width:150px;
-}
-
-#title {
-	font-size:60px;
-	padding-left:30px;
-}
-
-span {
-	display: inline-table;
-	vertical-align: middle;
-}
-
 body {
 	background-color: #F4DECB;	
 	font-family: Arial;
-}
-
-.header {
-	border: 1px solid gray;
-	border-radius: 15px;
-	background-color: #F8EEE7;
-	margin:0;
 }
 
 .main {
@@ -32,7 +11,7 @@ body {
 	background-color: white;
 }
 
-.btn, .nav-btn {
+.btn{
 	text-decoration:none;
 	color:white;
 	font-size:18px;
@@ -64,29 +43,6 @@ a {
 	font-size:18px;
 }
 
-#exit {
-	margin-left:auto;
-	width:140px;
-}
-
-#view1 {
-	width: 180px;
-}
-
-#view2 {
-	width: 200px;
-}
-
-#buttons {
-	display:flex;
-	align-items: flex-start;
-}
-
-
-div {
-	margin:20px;
-}
-
 td {
 	padding-left:20px;
 	padding-top:20px;
@@ -100,4 +56,39 @@ td {
 	width: 300px;
 	height:30px;
 	padding-left:10px;
+}
+
+#add {
+	background-color:#720F8F;
+    border: none;
+    color: white;
+	border-radius: 5px;
+	margin:10px;
+    font-size: 16px;
+	width:20px;
+	height:15px;
+	text-align:center;
+}
+
+#inputs1, #inputs2 {
+	margin:0;
+	padding:0;
+}
+
+#save, #download {
+	vertical-align:top;
+}
+
+.edit {
+	background-color:#720F8F;
+    border: none;
+    color: white;
+	border-radius: 5px;
+    font-size: 14px;
+	width:25px;
+	height:25px;
+	text-align:center;
+	margin:0;
+	padding:0;
+	overflow:hidden;
 }

@@ -23,7 +23,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     <link rel="shortcut icon" href="image/group.png" type="image/png"/>
     <title>Групова работа</title>
     <link href="style/ownFiles.css" rel="stylesheet" type="text/css">
-
+	<link href="style/nav.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <?php include ("navigation.php"); ?>
@@ -33,8 +33,9 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
 
     $username  = $user->getUsername();
 
-    $sql= "SELECT `content_url` FROM `document`  WHERE `owner` = '$username' ORDER BY `last_update_date` DESC";
-    $stmt = (new Db())->getConn()->query($sql);
+    $sql= "SELECT `content_url` FROM `document`  WHERE `owner` = ? ORDER BY `last_update_date` DESC";
+    $stmt = (new Db())->getConn()->prepare($sql);
+	$stmt->execute(["$username"]);
 
 //	echo "<button id="."create".">"."Създаване на собствен файл"."</button>";
 

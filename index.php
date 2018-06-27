@@ -23,7 +23,7 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     <link rel="shortcut icon" href="image/group.png" type="image/png"/>
     <title>Групова работа</title>
     <link href="style/index.css" rel="stylesheet" type="text/css">
-
+	<link href="style/nav.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <?php include ("navigation.php"); ?>
@@ -34,8 +34,9 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
 
     $username  = $user->getUsername();
 
-    $sql= "SELECT * FROM `document`  WHERE `owner` = '$username' ORDER BY `last_update_date` DESC";
-    $stmt = (new Db())->getConn()->query($sql);
+    $sql= "SELECT * FROM `document`  WHERE `owner` = ? ORDER BY `last_update_date` DESC";
+    $stmt = (new Db())->getConn()->prepare($sql);
+	$stmt->execute(["$username"]);
 
     if($stmt->rowCount() > 0) {
         echo "<table>";
