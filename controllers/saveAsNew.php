@@ -19,12 +19,17 @@ $document->writeFile();
 
 $documentInfo->load();
 
-$users = $_POST['user'];
-	foreach ($users as $userToBeAdded) {
+
+$users1 = $_POST['user1'];
+	foreach ($users1 as $userToBeAdded) {
 		$documentInfo->addRight($userToBeAdded);
 	}
-
-$_SESSION['created'] = 'true';
-header('Location: ../create.php');
+	
+$users2 = $_POST['user2'];
+	foreach ($users2 as $userToBeRemoved) {
+		$documentInfo->removeRight($userToBeRemoved);
+	}
+	
+header('Location: ../ownFiles.php');
 exit();
 ?>
