@@ -153,8 +153,11 @@ class DocumentInfo
 
     public function removeRight($userToBeDeleted)
     {
+        if($this->isOwner()) {
             $stmt = (new Db())->getConn()->prepare("DELETE FROM `user_document` WHERE id_document = ? AND username = ?");
             return $stmt->execute([$this->id, $userToBeDeleted]);
+        }
+        return false;
     }
 
     public function hasRight($user)

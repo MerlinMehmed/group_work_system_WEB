@@ -14,7 +14,6 @@
         include ('controllers/editDocument.php');
     ?>
 	<div class="main">
-		<form method="post">
 		<table>
 		<tr><td>Редактиране на файла:</td><td>Визуализация:</td></tr>
 		<tr><td><button class="edit" onclick="formatText(document.getElementById('inputTextToSave'),'<b>','</b>')"><b>B</b></button>
@@ -29,7 +28,7 @@
 		</td><td><button onclick="return showText();" style="width:65px" class="edit">Преглед</button></td></tr>	
 			<tr>
 				<td>
-					<textarea name="content" id="inputTextToSave" cols="90" rows="20"><?php echo $document->getContent(); ?></textarea>
+					<textarea id="inputTextToSave" cols="90" rows="20"><?php echo $document->getContent(); ?></textarea>
 				</td>
 				<td id="text" style="vertical-align:top"></td>
 			</tr>
@@ -55,11 +54,10 @@
 				<div id="inputs2"></div></td>
 			</tr>
 			<tr>
-				<td><button type="submit" formaction="">Запази</button></td>
-				<td><button type="submit" formaction="controllers/saveAsNew.php">Запази като нов файл</button><td>
+				<td><button type="submit">Запази</button></td>
+				<td><button type="submit">Запази като нов файл</button><td>
 			</tr>
 		</table>
-		</form>
 	</div>
   </body>
 </html>

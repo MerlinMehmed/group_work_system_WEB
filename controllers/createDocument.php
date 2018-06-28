@@ -17,13 +17,6 @@ $documentInfo->insert();
 $document = new Document($documentInfo, $content);
 $document->writeFile();
 
-$documentInfo->load();
-
-$users = $_POST['user'];
-	foreach ($users as $userToBeAdded) {
-		$documentInfo->addRight($userToBeAdded);
-	}
-
 $_SESSION['created'] = 'true';
 header('Location: ../create.php');
 exit();
