@@ -146,15 +146,18 @@ class DocumentInfo
     }
 
     public function addRight($userToBeAdded)
-    {
-        $stmt = (new Db())->getConn()->prepare("INSERT INTO `user_document` (username, id_document) VALUES (?, ?)");
-        return $stmt->execute([$userToBeAdded, $this->id]);
+    {	if($this->isOwner() && $userToBeAdded != ''){
+				$stmt = (new Db())->getConn()->prepare("INSERT INTO `user_document` (username, id_document) VALUES (?, ?)");
+				return $stmt->execute([$userToBeAdded, $this->id]);
+		}
     }
 
     public function removeRight($userToBeDeleted)
     {
+		if ($this->isOwner()){
             $stmt = (new Db())->getConn()->prepare("DELETE FROM `user_document` WHERE id_document = ? AND username = ?");
             return $stmt->execute([$this->id, $userToBeDeleted]);
+		}
     }
 
     public function hasRight($user)
@@ -185,8 +188,7 @@ class DocumentInfo
 
     private function isOwner()
     {
-        $stmt = (new Db())->getConn()->prepare("SELECT count (*) FROM 'document' WHERE owner = ? and content_url = ?");
-        $stmt->execute($_SESSION['username'], $this->contentUrl);
-        return $stmt->fetch();
+        $stmt = (new Db())->getConn()->prepare("SELECT * FROM `document` WHERE owner = ? and id = ?");
+        return $stmt->execute([$_SESSION['username'], $this->getId()]);;
     }
 }
