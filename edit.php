@@ -29,7 +29,7 @@
 		<form method="post">	
 			<tr>
 				<td>
-					<textarea id="inputTextToSave" cols="90" rows="20"><?php echo $document->getContent(); ?></textarea>
+					<textarea name="content" id="inputTextToSave" cols="90" rows="20"><?php echo $document->getContent(); ?></textarea>
 				</td>
 				<td id="text" style="vertical-align:top"></td>
 			</tr>
