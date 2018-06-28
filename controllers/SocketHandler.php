@@ -1,19 +1,6 @@
 <?php
 
 class SocketHandler {
-    //    function send($message) {
-//        global $clientSocketArray;
-//        global $clientsDocumentsId;
-//        $messageLength = strlen($message);
-////        $docId = json_decode($message)->id;
-//        foreach($clientSocketArray as $index => $clientSocket)
-//        {
-////            if($clientsDocumentsId[$index] = $docId) {
-//                @socket_write($clientSocket, $message, $messageLength);
-////            }
-//        }
-//        return true;
-//    }
 
     function send($message) {
         if(is_array($message)) {
@@ -33,9 +20,7 @@ class SocketHandler {
             $messageLength = strlen($message);
             foreach($clientSocketArray as $clientSocket)
             {
-//            if($clientsDocumentsId[$index] == $docId) {
                 @socket_write($clientSocket, $message, $messageLength);
-//            }
             }
         }
 
@@ -113,8 +98,9 @@ class SocketHandler {
         return $ACK;
     }
 
-    function createChatBoxMessage($id, $chat_user,$chat_box_message) {
-        $message = $chat_user . ": <div class='chat-box-message'>" . $id . $chat_box_message . "</div>";
+    function createChatBoxMessage($id, $message) {
+//        $message = $chat_box_message;
+//            "<div id='lastUpdateBy'> Last updated by " . $chat_user . "</div> <div class='chat-box-message'>" . $chat_box_message . "</div>";
         $messageArray = array('message'=>$message,'message_type'=>'chat-box-html');
         $chatMessage = $this->seal(json_encode($messageArray));
         return array($id, $chatMessage);

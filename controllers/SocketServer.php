@@ -44,7 +44,7 @@ while (true) {
             } else {
                 $messageObj = json_decode($socketMessage);
                 var_dump($messageObj);
-                $chat_box_message = $socketHandler->createChatBoxMessage($messageObj->id, $messageObj->chat_user, $messageObj->chat_message);
+                $chat_box_message = $socketHandler->createChatBoxMessage($messageObj->id, $messageObj->chat_message);
                 $socketHandler->send($chat_box_message);
             }
             break 2;
