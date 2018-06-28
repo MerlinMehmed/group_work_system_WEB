@@ -29,7 +29,7 @@ while (true) {
         socket_getpeername($newSocket, $client_ip_address);
         $connectionACK = $socketHandler->newConnectionACK($client_ip_address);
 
-        $socketHandler->send($connectionACK);
+//        $socketHandler->send($connectionACK);
 
         $newSocketIndex = array_search($socketResource, $newSocketArray);
         unset($newSocketArray[$newSocketIndex]);
@@ -54,16 +54,11 @@ while (true) {
         if ($socketData === false) {
             socket_getpeername($newSocketArrayResource, $client_ip_address);
             $connectionACK = $socketHandler->connectionDisconnectACK($client_ip_address);
-            $socketHandler->send($connectionACK);
+//            $socketHandler->send($connectionACK);
             $newSocketIndex = array_search($newSocketArrayResource, $clientSocketArray);
             unset($clientSocketArray[$newSocketIndex]);
         }
     }
 }
 socket_close($socketResource);
-
-//            if($clientsDocumentsId[$index] == 0) {
-//                $clientsDocumentsId[$index] = $messageObj -> id;
-//            }
-//            $chat_box_message = $socketHandler->createChatBoxMessage($messageObj->chat_user, $messageObj->chat_message);
 ?>

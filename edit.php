@@ -7,12 +7,14 @@
 	<link href="style/edit.css" rel="stylesheet" type="text/css">
 	<link href="style/nav.css" rel="stylesheet" type="text/css">
 	<script  src="js/edit.js"></script>
+      <script src="js/webSocket.js"></script>
   </head>
   <body>
     <?php include ("navigation.php"); ?>
     <?php
         include ('controllers/editDocument.php');
     ?>
+    <div id = "info-box"></div>
 	<div class="main">
 		<table>
 		<tr><td>Редактиране на файла:</td><td>Визуализация:</td></tr>
