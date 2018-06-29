@@ -18,10 +18,17 @@
 		<center >
 			<h1>Регистрация</h1>
 			<form id="register" onsubmit = "return validate()" method="post" action="controllers/register.php">
-				<h4>Потребителско име:</h4> <input type="text" name="username" id="username"><div id="user" class="reg"></div>
-				<h4>E-mail:</h4> <input type="email" name="email" id="email"><div id="mail" class="reg"></div>
-				<h4>Парола:</h4><input type="password" name="password" id="password"><div id="pass" class="reg"></div>
-				<h4>Повтори паролата:</h4><input type="password" name="secondpass" id="repeatedpass"><div id="second" class="reg"></div>
+				<h4>Потребителско име:</h4> <input type="text" name="username" id="username">
+				<div id="user" class="error">
+                    <?php
+                        if(isset($_GET['exists'])) {
+                            echo 'Потребителското име е заето';
+                        }
+                    ?>
+				</div>
+				<h4>E-mail:</h4> <input type="email" name="email" id="email"><div id="mail" class="error"></div>
+				<h4>Парола:</h4><input type="password" name="password" id="password"><div id="pass" class="error"></div>
+				<h4>Повтори паролата:</h4><input type="password" name="secondpass" id="repeatedpass"><div id="second" class="error"></div>
 				<button class="btn" type="submit">Регистрация</button>
 			</form>
 		</center>

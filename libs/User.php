@@ -18,6 +18,11 @@ class User
         }
     }
 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
     public function getEmail()
     {
         return $this->email;
@@ -45,6 +50,7 @@ class User
         {
             $stmt = (new Db())->getConn()->prepare("SELECT * FROM `users` WHERE username = ?");
             $result = $stmt->execute([$this->username]);
+
         }
         elseif ($this->email)
         {
@@ -59,7 +65,9 @@ class User
         $dbUser = $stmt->fetch();
 
         $this->username     = $dbUser['username'];
+        $this->password     = $dbUser['password'];
         $this->email        = $dbUser['email'];
+
 
         return !!$dbUser;
     }

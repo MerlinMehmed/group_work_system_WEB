@@ -1,7 +1,3 @@
-function redirect() {
-    location.href = "./register.html";
-}
-
 function validate() {
 	var form = document.getElementById("register");
     var x = document.getElementById("username").value;

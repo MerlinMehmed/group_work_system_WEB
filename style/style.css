@@ -101,6 +101,9 @@ h1 {
 	width: 200px;
 }
 
-.reg {
-	color:red;
+.error {
+	width: 250px;
+	color:white;
+	background-color: rgba(114, 15, 143, 0.5);
+	border-radius:5px;
 }

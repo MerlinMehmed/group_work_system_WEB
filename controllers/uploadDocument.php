@@ -54,6 +54,7 @@ if ($uploadOk == 0) {
         }
 		
 		rename ($target_dir.basename( $_FILES["fileToUpload"]["name"]), $target_dir.basename($_POST["fileName"]).'.html');
+        header("Location: ../edit.php?file=". $contentUrl);
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

@@ -38,27 +38,24 @@
 
 			<tr>
 				<td><b>Име на файла:</b>     <input name="fileName" id="inputFileNameToSaveAs" value="<?php $pieces = explode("/", $fileName);
-																											echo $pieces[1]; ?>"></input> </td>
-			</tr>
-			<tr><td colspan="4"><hr><td></tr>
-			<tr>
-				<td><b>Тип на файла:</b><input id="text"type="radio" name="type" value="txt"> .txt    
-				<input type="radio" name="type" value="html"> .html</td>				
-				<td id="download"><button onclick="saveTextAsFile()">Свали</button></td>
-				
-			</tr>
+																											echo $pieces[1]; ?>" required></input> </td>
+                <td id="download"><button onclick="saveTextAsFile()">Свали</button></td>
+            </tr>
 			<tr><td colspan="4"><hr><td></tr>
 			<tr>
 				<td><b>Добави права за достъп:</b>
 				<div><input type="text" name="user1[]" class="user"><span id="add" onclick="addInput1()">+<span></div>
 				<div id="inputs1"></div></td>			
 			</tr>
+            <tr><td colspan="4"><hr><td></tr>
 			<tr>
 				<td><b>Премахни права за достъп:</b>
 				<div><input type="text" name="user2[]" class="user"><span id="add" onclick="addInput2()">+<span></div>
 				<div id="inputs2"></div></td>
 			</tr>
+            <tr><td colspan="4"><hr><td></tr>
 			<tr>
+
 				<td><button type="submit" formaction="controllers/saveDocument.php">Запази</button></td>
 				<td><button type="submit" formaction="controllers/saveAsNew.php">Запази като нов файл</button><td>
 			</tr>

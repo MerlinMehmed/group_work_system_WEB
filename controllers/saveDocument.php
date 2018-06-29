@@ -25,6 +25,7 @@ $stmt = (new Db())->getConn()->prepare("UPDATE `document` SET last_update_user =
 $stmt->execute([$filePath]);
 
 $users1 = $_POST['user1'];
+var_dump($users1);
 if (!empty($users1))
 {
 	foreach ($users1 as $userToBeAdded) {

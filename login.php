@@ -5,7 +5,6 @@
         <title>Групова работа</title>
         <meta charset="utf-8">
         <link href="style/style.css" rel="stylesheet" type="text/css">
-        <script src="js/register.js"></script>
     </head>
     <body>
         <div class="header">
@@ -18,10 +17,25 @@
             <center >
                 <h1>Вписване</h1>
                 <form id="login" method="post" action="controllers/login.php">
+
                     <h4>Потребителско име:</h4> <input type="text" name="username">
+                    <div id="user" class="error">
+                        <?php
+                            if (isset($_GET['exists'])) {
+                                echo "Не съществува такова потребителско име.";
+                            }
+                        ?>
+                    </div>
                     <h4>Парола:</h4><input type="password" name="password">
+                    <div id="user" class="error">
+                        <?php
+                        if (isset($_GET['wrong'])) {
+                            echo "Грешна парола!";
+                        }
+                        ?>
+                    </div>
                     <button class="btn" type="submit">Вход</button>
-                    <button class="btn" onclick="redirect()" type="button">Регистрация</button>
+                    <button class="btn" onclick="location.href = 'register.php'" type="button">Регистрация</button>
                 </form>
             </center>
         </div>

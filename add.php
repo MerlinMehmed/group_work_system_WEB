@@ -16,7 +16,7 @@
 		<b>Избери файл за качване: </b>
 			<div><input type="file" name="fileToUpload" id="fileToUpload" value="Избор на файл"></div>
 		<b>Име на файла: </b>
-			<div><input type="text" name="fileName" id="fileName"></div>
+			<div><input type="text" name="fileName" id="fileName" required></div>
 		<b>Потребители с достъп до файла: </b>
 			<div><input type="text" name="user[]" class="user"><span id="add" onclick="addInput()">+<span></div>
 			<div id="inputs"></div>
