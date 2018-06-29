@@ -1,14 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 юни 2018 в 07:06
--- Версия на сървъра: 10.1.30-MariaDB
--- PHP Version: 7.2.2
-
-CREATE DATABASE IF NOT EXISTS `group_work_system` COLLATE utf8mb4_unicode_ci;
-USE `group_work_system`
+-- Generation Time: 29 юни 2018 в 16:14
+-- Версия на сървъра: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,10 +41,10 @@ CREATE TABLE `document` (
 --
 
 INSERT INTO `document` (`id`, `owner`, `content_url`, `last_update_user`, `last_update_date`) VALUES
-(1, 'polly', 'polly/po', NULL, '2018-05-17 16:44:33'),
-(3, 'polly', 'polly/olly', NULL, '2018-05-17 16:44:52'),
-(4, 'polly', 'polly/olly', NULL, '2018-05-17 16:45:22'),
-(5, 'merry', 'me', NULL, '2018-05-17 16:45:22');
+(1, 'fmi', 'fmi/document', 'merry', '2018-06-29 14:44:26'),
+(2, 'merry', 'merry/referat', 'fmi', '2018-06-28 10:32:00'),
+(4, 'merry', 'merry/file2', 'polly', '2018-06-29 14:47:28'),
+(5, 'polly', 'polly/document1', NULL, '2018-06-25 19:08:20');
 
 -- --------------------------------------------------------
 
@@ -57,7 +54,7 @@ INSERT INTO `document` (`id`, `owner`, `content_url`, `last_update_user`, `last_
 
 CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -66,8 +63,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `email`) VALUES
-('merry', 'merry', 'erry'),
-('polly', 'polly', 'olly');
+('fmi', 'fmipass', 'fmi@fmi.com'),
+('merry', 'merrymerry', 'merry@gmail.com'),
+('polly', 'pollypolly', 'polly@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -85,8 +83,10 @@ CREATE TABLE `user_document` (
 --
 
 INSERT INTO `user_document` (`username`, `id_document`) VALUES
-('merry', 3),
-('polly', 5);
+('fmi', 2),
+('fmi', 4),
+('merry', 5),
+('polly', 4);
 
 --
 -- Indexes for dumped tables
