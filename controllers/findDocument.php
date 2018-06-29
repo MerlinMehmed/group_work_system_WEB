@@ -7,7 +7,6 @@ use libs\DocumentInfo;
 
 function findDocument($fileName)
 {
-    $username = $_SESSION['username'];
     $path = $fileName;
 
     $sql= "SELECT * FROM document WHERE content_url = ?";

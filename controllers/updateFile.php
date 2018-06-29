@@ -6,8 +6,6 @@ use libs\DocumentInfo;
 
 function updateFile($fileName)
 {
-    $_SESSION['user'] = 'polly';
-
     $username = $_SESSION['user'];
     $path = $username."/".$fileName;
 

@@ -6,8 +6,6 @@ use libs\DocumentInfo;
 
 function showOwnFiles()
 {
-	$_SESSION['user'] = 'polly';
-
 	$username = $_SESSION['user'];
 
 	$sql= "SELECT * FROM documents WHERE owner = ?";

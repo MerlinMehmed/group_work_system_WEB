@@ -6,8 +6,6 @@ use libs\DocumentInfo;
 
 function showFiles()
 {
-	$_SESSION['user'] = 'polly';
-
 	$username = $_SESSION['user'];
 
 	$sql= "SELECT * FROM user_document WHERE username = ?";
