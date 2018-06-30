@@ -37,8 +37,6 @@ if (isset($_SESSION['username']) && $_SESSION['username'])
     $stmt = (new Db())->getConn()->prepare($sql);
 	$stmt->execute(["$username"]);
 
-//	echo "<button id="."create".">"."Създаване на собствен файл"."</button>";
-
     if($stmt->rowCount() > 0) {
         echo "<table>";
         echo "<tr><th colspan=" . "3" . ">Име на документа</th></tr>";

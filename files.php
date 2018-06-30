@@ -1,5 +1,4 @@
 <?php
-// To - do index page
 require_once "libs/Init.php";
 Init::_init();
 
