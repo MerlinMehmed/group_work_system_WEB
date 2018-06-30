@@ -50,13 +50,16 @@
 
 
  /* Схема на данните от таблица `users` */
+ 
+	$pass1 = hash('sha256', 'fmipass');
+	$pass2 = hash('sha256', 'merrymerry');
+	$pass3 = hash('sha256', 'pollypolly');
 
-  	$sql = "INSERT INTO `users` (`username`, `password`, `email`) VALUES
-					('fmi', 'fmipass', 'fmi@fmi.com'),
-					('merry', 'merrymerry', 'merry@gmail.com'),
-					('polly', 'pollypolly', 'polly@gmail.com')";
+  	$sql = "INSERT INTO `users` (`username`, `password`, `email`) VALUES (?,?,?)";
 	$stmt = $conn->prepare($sql);
-	$stmt->execute();
+	$stmt->execute(['fmi', "$pass1", 'fmi@fmi.com']);
+	$stmt->execute(['merry', "$pass2", 'merry@gmail.com']);
+	$stmt->execute(['polly', "$pass3", 'polly@gmail.com']);
  
 
  /* Структура на таблица `user_document` */
